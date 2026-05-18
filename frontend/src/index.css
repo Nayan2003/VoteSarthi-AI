@@ -1,0 +1,225 @@
+/* ── Google Fonts — must be FIRST before @tailwind ──────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Global CSS Variables ────────────────────────────────────────────────── */
+:root {
+  --color-bg:       #020617;
+  --color-surface:  #0f172a;
+  --color-border:   rgba(148, 163, 184, 0.15);
+  --color-accent:   #3b82f6;
+  --color-accent2:  #8b5cf6;
+  --text-muted:     #64748b;
+}
+
+/* ── Base ────────────────────────────────────────────────────────────────── */
+body {
+  font-family: 'Inter', 'DM Sans', system-ui, sans-serif;
+  background: var(--color-bg);
+  color: #e2e8f0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Font utilities ───────────────────────────────────────────────────────── */
+.font-syne { font-family: 'Syne', sans-serif; }
+.font-dm   { font-family: 'DM Sans', sans-serif; }
+
+/* ── Glassmorphism ────────────────────────────────────────────────────────── */
+.glass {
+  background:      rgba(15, 23, 42, 0.60);
+  backdrop-filter: blur(14px);
+  border:          1px solid var(--color-border);
+}
+
+/* ── Button utilities ─────────────────────────────────────────────────────── */
+.btn-primary {
+  display:         inline-flex;
+  align-items:     center;
+  gap:             0.5rem;
+  padding:         0.5rem 1.25rem;
+  border-radius:   0.75rem;
+  font-weight:     600;
+  font-size:       0.875rem;
+  color:           #ffffff;
+  background:      linear-gradient(135deg, #FF9933, #f59e0b);
+  border:          1px solid rgba(255, 153, 51, 0.4);
+  transition:      all 0.2s ease;
+  cursor:          pointer;
+}
+.btn-primary:hover { filter: brightness(1.1); }
+
+.btn-ghost {
+  display:         inline-flex;
+  align-items:     center;
+  gap:             0.5rem;
+  padding:         0.5rem 1.25rem;
+  border-radius:   0.75rem;
+  font-weight:     500;
+  font-size:       0.875rem;
+  color:           #94a3b8;
+  background:      rgba(255, 255, 255, 0.04);
+  border:          1px solid rgba(255, 255, 255, 0.1);
+  transition:      all 0.2s ease;
+  cursor:          pointer;
+}
+.btn-ghost:hover { background: rgba(255, 255, 255, 0.08); color: #ffffff; }
+
+/* ── Custom scrollbar ─────────────────────────────────────────────────────── */
+.custom-scroll::-webkit-scrollbar       { width: 4px; }
+.custom-scroll::-webkit-scrollbar-track { background: transparent; }
+.custom-scroll::-webkit-scrollbar-thumb { background-color: #334155; border-radius: 9999px; }
+
+.scrollbar-thin::-webkit-scrollbar       { width: 4px; }
+.scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+.scrollbar-thumb-slate-700::-webkit-scrollbar-thumb { background-color: #334155; border-radius: 9999px; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Notification banner animation ───────────────────────────────────────── */
+@keyframes slideDown {
+  from { transform: translateY(-8px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+.animate-slideDown { animation: slideDown 0.3s ease both; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LIGHT MODE — pure white + blue accent palette
+   Applied when <html> has .light class
+   ══════════════════════════════════════════════════════════════════════════ */
+html.light,
+html.light body {
+  background: #ffffff !important;
+  color: #0f172a;
+}
+
+/* Page background */
+html.light .min-h-screen { background: #f0f6ff !important; }
+
+/* ── Panels / cards ─── */
+html.light aside,
+html.light section,
+html.light header {
+  background: #ffffff !important;
+  border-color: #bfdbfe !important;   /* blue-200 */
+  color: #0f172a !important;
+}
+
+/* Backdrop blur panels */
+html.light [class*="bg-slate-900"],
+html.light [class*="bg-slate-800"],
+html.light [class*="bg-slate-700"] {
+  background: #ffffff !important;
+  color: #0f172a !important;
+}
+
+html.light [class*="bg-slate-950"] {
+  background: #f0f6ff !important;
+}
+
+/* ── Text ─── */
+html.light [class*="text-slate-100"] { color: #0f172a !important; }
+html.light [class*="text-slate-200"] { color: #1e3a5f !important; }
+html.light [class*="text-slate-300"] { color: #1e40af !important; }
+html.light [class*="text-slate-400"] { color: #2563eb !important; }
+html.light [class*="text-slate-500"] { color: #3b82f6 !important; }
+html.light [class*="text-slate-600"] { color: #64748b !important; }
+html.light .text-white               { color: #0f172a !important; }
+
+/* ── Borders ─── */
+html.light [class*="border-slate-700"],
+html.light [class*="border-slate-600"] {
+  border-color: #bfdbfe !important;  /* blue-200 */
+}
+
+/* ── Nav links (non-active) ─── */
+html.light nav a { color: #1e40af !important; }
+html.light nav a:hover { background: #dbeafe !important; color: #1d4ed8 !important; }
+
+/* ── Buttons in header ─── */
+html.light [class*="bg-slate-100"],
+html.light [class*="bg-slate-800"] {
+  background: #eff6ff !important;   /* blue-50 */
+  color: #1e40af !important;
+}
+html.light [id="theme-toggle"],
+html.light [id="panel-left-toggle"],
+html.light [id="panel-right-toggle"],
+html.light [id="sign-out"] {
+  background: #dbeafe !important;
+  color: #1d4ed8 !important;
+}
+
+/* ── Chat input ─── */
+html.light input[id="chat-input"] {
+  background: #f8faff !important;
+  border-color: #93c5fd !important;
+  color: #0f172a !important;
+}
+html.light input[id="chat-input"]::placeholder { color: #93c5fd; }
+
+/* ── Message bubbles ─── */
+html.light [class*="rounded-xl"] {
+  border-color: #bfdbfe !important;
+}
+
+/* ── Mic / send buttons ─── */
+html.light [id="voice-mic"]  { }  /* keep coloured */
+html.light [id="chat-send"]  { }  /* keep blue */
+
+/* ── Vault cards ─── */
+html.light [class*="bg-red-950"]     { background: #fff1f2 !important; }
+html.light [class*="bg-emerald-950"] { background: #f0fdf4 !important; }
+
+/* ── Scrollbar ─── */
+html.light .scrollbar-thin::-webkit-scrollbar-thumb { background-color: #93c5fd; }
+
+/* ── Glass ─── */
+html.light .glass {
+  background: rgba(255,255,255,0.85);
+  border-color: #bfdbfe;
+}
+
+
+/* ── Text colours ─── */
+html.light .text-slate-100  { color: #0f172a !important; }
+html.light .text-slate-200  { color: #1e293b !important; }
+html.light .text-slate-300  { color: #334155 !important; }
+html.light .text-slate-400  { color: #475569 !important; }
+html.light .text-slate-500  { color: #64748b !important; }
+html.light .text-slate-600  { color: #475569 !important; }
+html.light .text-white      { color: #0f172a !important; }
+
+/* ── Background colours ─── */
+html.light .bg-slate-950      { background-color: #f1f5f9 !important; }
+html.light .bg-slate-900      { background-color: #ffffff !important; }
+html.light .bg-slate-800      { background-color: #e2e8f0 !important; }
+html.light .bg-slate-700      { background-color: #cbd5e1 !important; }
+
+/* ── Borders ─── */
+html.light .border-slate-700  { border-color: #cbd5e1 !important; }
+html.light .border-slate-600  { border-color: #94a3b8 !important; }
+
+/* ── Chat input ─── */
+html.light input[id="chat-input"] {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+html.light input[id="chat-input"]::placeholder { color: #94a3b8; }
+
+/* ── Scrollbar in light mode ─── */
+html.light .scrollbar-thin::-webkit-scrollbar-thumb { background-color: #cbd5e1; }
+
+/* ── Status banners ─── */
+html.light .bg-red-950\/40      { background: #fef2f2 !important; }
+html.light .bg-emerald-950\/40  { background: #f0fdf4 !important; }
+
+/* ── Glass panel ─── */
+html.light .glass {
+  background: rgba(255,255,255,0.70);
+  border-color: rgba(148,163,184,0.25);
+}
