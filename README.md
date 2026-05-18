@@ -327,7 +327,7 @@ npm run dev          # Starts on http://localhost:5173
 
 ## 📜 License
 
-MIT — built for civic good. Feel free to fork and extend for your constituency!
+Nano — built for civic good. Feel free to fork and extend for your constituency!
 
 ---
 
